@@ -1,0 +1,39 @@
+@model IEnumerable<inscription.Models.Inscription>
+
+@{
+    ViewData["Title"] = "Liste des inscriptions";
+}
+
+<div class="card shadow-sm">
+    <div class="card-header bg-secondary text-white">
+        <h5 class="mb-0">Liste des inscriptions</h5>
+    </div>
+
+    <div class="card-body">
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>Étudiant</th>
+                    <th>Classe</th>
+                    <th>Année scolaire</th>
+                    <th>Date d’inscription</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var i in Model)
+            {
+                <tr>
+                    <td>@i.Etudiant.Nom @i.Etudiant.Prenom</td>
+                    <td>@i.Classe.Libelle</td>
+                    <td>
+                        <span class="badge bg-success">
+                            @i.AnneeScolaire.Libelle
+                        </span>
+                    </td>
+                    <td>@i.DateInscription.ToShortDateString()</td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

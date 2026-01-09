@@ -1,0 +1,45 @@
+@{
+    ViewData["Title"] = "Nouvelle inscription";
+}
+
+<div class="card shadow-sm">
+    <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">Inscription d’un étudiant</h5>
+    </div>
+
+    <div class="card-body">
+        <form method="post">
+
+            <div class="mb-3">
+                <label class="form-label">Étudiant</label>
+                <select name="etudiantId" class="form-select" required>
+                    <option value="">-- Choisir un étudiant --</option>
+                    @foreach (var e in ViewBag.Etudiants)
+                    {
+                        <option value="@e.Id">
+                            @e.Matricule - @e.Nom @e.Prenom
+                        </option>
+                    }
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Classe</label>
+                <select name="classeId" class="form-select" required>
+                    <option value="">-- Choisir une classe --</option>
+                    @foreach (var c in ViewBag.Classes)
+                    {
+                        <option value="@c.Id">@c.Libelle</option>
+                    }
+                </select>
+            </div>
+
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-success">
+                    ✔ Valider l’inscription
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
